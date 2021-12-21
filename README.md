@@ -76,14 +76,14 @@ Prediction on species level with pretrained paramters:
     
 **OUTPUT**
 
-The format of the output file is a csv file which contain the prediction of each virus. *contig_name* is the accession from the input. 
+The format of the output file is a csv file which contain the prediction of each virus. Column *contig_name* is the accession from the input. 
 
 
 ### 2 Predicting virus infecting prokaryote
 If you want to predict hosts for viruses, you need to supply two kinds of inputs:
-1. Place your prokaryotic genomes in *new_prokaryote* folder.
-2. A fasta file containing the virus squences.
-Then, the program will output which virus in your fasta file will infect the prkaryotes in the *new_prokaryote* folder.
+1. Place your prokaryotic genomes in *new_prokaryote/* folder.
+3. A fasta file containing the virus squences.
+Then, the program will output which virus in your fasta file will infect the prkaryotes in the *new_prokaryote/* folder.
 
 The command is simlar to the previous one but one more paramter is need:
 
@@ -97,17 +97,41 @@ The command is simlar to the previous one but one more paramter is need:
 
 **OUTPUT**
 
-The format of the output file is a csv file which contain the prediction of each virus. *prokaryote* is the accession of your given prokaryotic genomes. *virus* is the list of viruses that might infect these genomes.
+The format of the output file is a csv file which contain the prediction of each virus. Column *prokaryote* is the accession of your given prokaryotic genomes. Column *virus* is the list of viruses that might infect these genomes.
 
 
-# References
+## Extension of the parokaryotic genomes database
+Due to the limitation of storage on GitHub, we only provided the parokaryote with known interactions (Date up to 2020) in *prokaryote* folder. If you want to predict interactions with more species, please place your parokaryotic genomes into *prokaryote/* folder and add an entry of taxonomy information into *dataset/prokaryote.csv*. We also recommand you only add the prokaryotes of interest to save the computation resourse and time. This is because all the genomes in *prokaryote* folder will be used to generate the multimodal graph, which is a O(n^2) algorithm. 
+
+**Example**
+
+If you have a metagenomic data and you know that only E. coli, Butyrivibrio fibrisolvens, and Faecalibacterium prausnitzii exist in the metagenomic data. Then you can placed the genomes of these three species into the *prokaryote/* and add the entry in *dataset/prokaryote.csv*. An example of the entry is look like:
+
+
+    GCF_000007445,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacterales,Enterobacteriaceae,Escherichia,Escherichia coli
+
+The corresponding header of the entry is: Accession,Superkingdom,Phylum,Class,Order,Family,Genus,Species. If you do not know the whole taxonomy tree, you can directly use a specific name for all columns. Because CHERRY is a link prediction tool, it will directly use the given name for prediction.
+
+*Noted:* Since our program will use the accession for searching and constructing the knowledge graph, the name of the fasta file of your genomes should be the same as the given accession. For example, if your accession is GCF_000007445, your file name should be GCF_000007445.fa. Otherwise, the program cannot find the entry. 
+
+## Extension of the virus-prokaryote interactions database
+
+If you know more virus-prokaryote interactions than our pre-trained model (given in Interactiondata), you can add them to train a custom model. Several steps you need to do to train your model:
+
+1. Add your viral genomes into the *nucl.fasta* file and run the *python refresh.py* to generate new *protein.fasta* and *database_gene_to_genome.csv* files. Then replace the old one in the *dataset/* folder
+2. Add the entrys of host taxonomy information into *dataset/virus.csv*. The corresponding header of the entry is: Accession (of the virus), Superkingdom, Phylum, Class, Order, Family, Genus, Species. The required field is **Species**. You can left it blank if you do not know other fields. Also, the accession of the virus shall be the same as your fasta entry. 
+3. Place your prokaryotic genomes into the the *prokaryote/* folder and add an entry in *dataset/prokaryote.csv*. The guideline is the same as the previous section.
+4. use **retrain** as the parameter for *--mode* option to run the program.
+
+
+### References
 The paper is submitted to the *Nucleic Acids Research*.
 
-## Contact
+### Contact
 If you have any questions, please email us: jyshang2-c@my.cityu.edu.hk
 
 
-## Notes
+### Notes
 1. if the program output an error (which is caused by your machine):
 `Error: mkl-service + Intel(R) MKL: MKL_THREADING_LAYER=INTEL is incompatible with libgomp.so.1 library.`
 You can type in the command `export MKL_SERVICE_FORCE_INTEL=1` before runing *run_Speed_up.py*
