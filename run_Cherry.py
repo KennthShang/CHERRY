@@ -112,8 +112,8 @@ decoder = model.decoder(node_dim, 128, 32)
 
 
 # Load pre-trained model
-encoder_dict = torch.load("Encoder_70.pkl", map_location='cpu')
-decoder_dict = torch.load("Decoder_70.pkl", map_location='cpu')
+encoder_dict = torch.load(f"dataset/pkl/Encoder_{inputs.taxa}.pkl", map_location='cpu')
+decoder_dict = torch.load(f"dataset/pkl/Decoder_{inputs.taxa}.pkl", map_location='cpu')
 net.load_state_dict(encoder_dict)
 decoder.load_state_dict(decoder_dict)
 
@@ -231,9 +231,9 @@ if inputs.model == 'retrain':
         if epoch % 50 == 0:
             train_acc = train_accuracy()
             print("Train acc: {:.2f} ".format(train_acc))
-            if train_acc > 0.8:
-                torch.save(net.state_dict(), f'Encoder_params.pkl')
-                torch.save(decoder.state_dict(), f'Decoder_params.pkl')
+            if train_acc > 0.7:
+                torch.save(net.state_dict(), f'Custom_Encoder_params.pkl')
+                torch.save(decoder.state_dict(), f'Custom_Decoder_params.pkl')
                 break
     torch.save(net.state_dict(), f'Custom_Encoder_params.pkl')
     torch.save(decoder.state_dict(), f'Custom_Decoder_params.pkl')
