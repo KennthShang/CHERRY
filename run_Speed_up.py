@@ -118,7 +118,7 @@ for i in range(file_id):
 
 
     for taxa in taxa_list:
-        cmd = f"python multimodel_graph.py --mode {inputs.mode} --taxa {taxa}"
+        cmd = f"python multimadel_graph.py --mode {inputs.mode} --taxa {taxa}"
         try:
             out = subprocess.check_call(cmd, shell=True)
         except:
