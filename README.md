@@ -76,8 +76,13 @@ Prediction on species level with pretrained paramters:
     
 **OUTPUT**
 
-The format of the output file is a csv file which contain the prediction of each virus. Column *contig_name* is the accession from the input. 
+The format of the output file is a csv file ("final_prediction.csv") which contain the prediction of each virus. Column *contig_name* is the accession from the input. 
 
+Since the topk method is given, we cannot give the how taxaonmic tree for each prediction. However, we will supply a script for you to convert the prediction into a complte taxonmoy tree. Use the following command to generate taxonomy tree:
+
+    python run_Taxonomy_tree.py [--k TOPK_PRED]
+    
+Because there are k prediction in the "final_prediction.csv" file, you need to specify the k to generate the tree. The output of program is 'Top_k_prediction_taxonomy.csv'.
 
 ### 2 Predicting virus infecting prokaryote
 If you want to predict hosts for viruses, you need to supply two kinds of inputs:
@@ -98,6 +103,7 @@ The command is simlar to the previous one but one more paramter is need:
 **OUTPUT**
 
 The format of the output file is a csv file which contain the prediction of each virus. Column *prokaryote* is the accession of your given prokaryotic genomes. Column *virus* is the list of viruses that might infect these genomes.
+
 
 
 ## Extension of the parokaryotic genomes database
@@ -135,5 +141,5 @@ If you have any questions, please email us: jyshang2-c@my.cityu.edu.hk
 1. if the program output an error (which is caused by your machine):
 `Error: mkl-service + Intel(R) MKL: MKL_THREADING_LAYER=INTEL is incompatible with libgomp.so.1 library.`
 You can type in the command `export MKL_SERVICE_FORCE_INTEL=1` before runing *run_Speed_up.py*
-2. Since the topk method is given, we cannot give the how taxaonmic tree for each prediction. However, we will supply a script for you to convert the prediction into a complte taxonmoy tree. (will be avaliable soon)
+
 
