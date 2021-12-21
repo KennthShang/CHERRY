@@ -149,10 +149,6 @@ cnt = 0
 for node in G.nodes():
     # if test virus node
     if "cherry" in node:
-        if node in virus_pred:
-            node2label[node] = virus_df[virus_df['Accession'] == virus_pred[node]][inputs.taxa].values[0]
-            test_id[node] = 1
-            continue
         neighbor_label = []
         for _, neighbor in G.edges(node):
             if neighbor in virus2id.keys():
@@ -168,6 +164,9 @@ for node in G.nodes():
         # CRISPR
         elif node in crispr_pred:
             node2label[node] = prokaryote_df[prokaryote_df['Accession'] == crispr_pred[node]][inputs.taxa].values[0]
+            test_id[node] = 1
+        elif node in virus_pred:
+            node2label[node] = virus_df[virus_df['Accession'] == virus_pred[node]][inputs.taxa].values[0]
             test_id[node] = 1
         # unlabelled
         else:
