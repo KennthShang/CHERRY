@@ -24,4 +24,4 @@ for label in prediction:
 tree_df = pd.concat(tree_df)
 tree_df['Accession'] = accession
 tree_df = tree_df.rename(columns={'Accession':'Contig_name'})
-tree_df.to_csv(f'Top_{inputs.k}_prediction_taxanomy.csv', index=False)
+tree_df.to_csv(f'Top_{inputs.k}_prediction_taxonomy.csv', index=False)
