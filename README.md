@@ -55,6 +55,8 @@ If you want to predict hosts for viruses, the input should be a fasta file conta
     python run_Speed_up.py [--contigs INPUT_FA] [--len MINIMUM_LEN] [--model MODEL] [--taxa TAXONOMY] [--topk TOPK_PRED]
     
 **Options**
+
+
       --contigs INPUT_FA
                             input fasta file
       --len MINIMUM_LEN
@@ -65,7 +67,8 @@ If you want to predict hosts for viruses, the input should be a fasta file conta
                             predicting host across different taxonomy (default Species)
       --topk TOPK_PRED
                             The host prediction with topk score (default 1)
-                            
+               
+
 **Example**
 
 Prediction on species level with pretrained paramters:
