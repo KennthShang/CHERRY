@@ -210,7 +210,7 @@ fi = to_clusterer(ntw, out_fn+"intermediate.ntw", merged_df.copy())
 ################################################################################
 ################################# Run BLASTN ###################################
 ################################################################################
-
+_ = subprocess.check_call("cat single_contig/* > out/test.fa", shell=True)
 query_file = "out/test.fa"
 db_virus_prefix = "dataset/virus_db/allVIRUS"
 output_file = "out/virus_out.tab"

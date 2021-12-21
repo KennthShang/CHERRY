@@ -57,7 +57,7 @@ if inputs.mode != 'virus':
 
 #  combine phage file 
 _ = subprocess.check_call("cat dataset/nucl.fasta single_contig/* > out/query.fa", shell=True)
-_ = subprocess.check_call("cat single_contig/* > out/test.fa", shell=True)
+
 
 
 
