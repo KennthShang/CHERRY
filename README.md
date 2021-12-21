@@ -11,7 +11,7 @@ Users can choose one of the task when running CHERRY. If you have any trouble in
 ## Required Dependencies
 * Python 3.x
 * Numpy
-* Pytorch>1.6.0
+* Pytorch>1.8.0
 * Networkx
 * Pandas
 * [Diamond](https://github.com/bbuchfink/diamond)
