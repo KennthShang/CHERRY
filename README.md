@@ -42,7 +42,7 @@ cd CHEERY/dataset
 bzip2 -d protein.fasta.bz2
 bzip2 -d nucl.fasta.bz2
 cd ../prokaryote
-unzip *
+gunzip *
 cd ..
 ```
 
