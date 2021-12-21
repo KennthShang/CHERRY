@@ -22,19 +22,13 @@ import networkx as nx
 import pandas as pd
 import random
  
-parser = argparse.ArgumentParser(description='manual to this script')
-parser.add_argument('--model', type=str, default = 'pretrain')
-parser.add_argument('--mode', type=str, default = 'virus')
-parser.add_argument('--gpus', type=int, default = 0)
-parser.add_argument('--taxa', type=str, default = 'Species')
-parser.add_argument('--topk', type=int, default = 3)
-inputs = parser.parse_args()
+
 
 
 seed = 123
 np.random.seed(seed)
 torch.random.manual_seed(seed)
-
+inputs = args.parse_args()
 
 # Check whether cuda is enable
 if torch.cuda.is_available():
@@ -257,7 +251,7 @@ if inputs.mode == 'virus':
                 confident_label = node2label[id2node[i]]
             virus_feature = encode[i]
             pred_label_score = []
-            for label in trainable_label:
+            for label in set(trainable_label):
                 if label == confident_label:
                     pred_label_score.append((label, 1))
                     continue
