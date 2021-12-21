@@ -118,10 +118,10 @@ The corresponding header of the entry is: Accession,Superkingdom,Phylum,Class,Or
 
 If you know more virus-prokaryote interactions than our pre-trained model (given in Interactiondata), you can add them to train a custom model. Several steps you need to do to train your model:
 
-1. Add your viral genomes into the *nucl.fasta* file and run the *python refresh.py* to generate new *protein.fasta* and *database_gene_to_genome.csv* files. Then replace the old one in the *dataset/* folder
+1. Add your viral genomes into the *nucl.fasta* file and run the *python refresh.py* to generate new *protein.fasta* and *database_gene_to_genome.csv* files. They will replace the old one in the *dataset/* folder automatically. 
 2. Add the entrys of host taxonomy information into *dataset/virus.csv*. The corresponding header of the entry is: Accession (of the virus), Superkingdom, Phylum, Class, Order, Family, Genus, Species. The required field is **Species**. You can left it blank if you do not know other fields. Also, the accession of the virus shall be the same as your fasta entry. 
 3. Place your prokaryotic genomes into the the *prokaryote/* folder and add an entry in *dataset/prokaryote.csv*. The guideline is the same as the previous section.
-4. use **retrain** as the parameter for *--mode* option to run the program.
+4. Use **retrain** as the parameter for *--mode* option to run the program.
 
 
 ### References
