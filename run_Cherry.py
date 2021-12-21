@@ -205,7 +205,7 @@ def train_topk_accuracy(k):
 if inputs.model == 'retrain':
     _ = net.train()
     _ = decoder.train()
-    for epoch in range(1250):
+    for epoch in range(120):
         encode = net((feature, support))
         loss = 0
         for label in trainable_label:
@@ -250,18 +250,21 @@ if inputs.mode == 'virus':
     with torch.no_grad():
         encode = net((feature, support))
         for i in range(len(encode)):
+            confident_label = 'unknown'
             if idx_test[id2node[i]] == 0:
                 continue
-            elif idx_test[id2node[i]] == 1:
-                node2pred[id2node[i]] = (node2label[id2node[i]], 1)
-            elif idx_test[id2node[i]] == 2:
-                virus_feature = encode[i]
-                pred_label_score = []
-                for label in trainable_label:
-                    prokaryote_feature = encode[label2hostid[label]]
-                    pred = decoder(virus_feature - prokaryote_feature)
-                    pred_label_score.append((label, torch.sigmoid(pred).detach().cpu().numpy()[0]))
-                node2pred[id2node[i]] = sorted(pred_label_score, key=lambda tup: tup[1], reverse=True)
+            if idx_test[id2node[i]] == 1:
+                confident_label = node2label[id2node[i]]
+            virus_feature = encode[i]
+            pred_label_score = []
+            for label in trainable_label:
+                if label == confident_label:
+                    pred_label_score.append((label, 1))
+                    continue
+                prokaryote_feature = encode[label2hostid[label]]
+                pred = decoder(virus_feature - prokaryote_feature)
+                pred_label_score.append((label, torch.sigmoid(pred).detach().cpu().numpy()[0]))
+            node2pred[id2node[i]] = sorted(pred_label_score, key=lambda tup: tup[1], reverse=True)
         for virus in crispr_pred:
             if virus not in node2pred:
                 pred = prokaryote_df[prokaryote_df['Accession'] == crispr_pred[virus]][inputs.taxa].values[0]
@@ -281,6 +284,7 @@ if inputs.mode == 'virus':
                     cnt+=1
                     file_out.write(f'{label},{score:.2f},')
                 file_out.write('\n')
+
 
 
 
