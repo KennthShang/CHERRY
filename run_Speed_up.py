@@ -118,11 +118,11 @@ for i in range(file_id):
 
 
     for taxa in taxa_list:
-        cmd = f"python multimadel_graph.py --mode {inputs.mode} --taxa {taxa}"
+        cmd = f"python multimodal_graph.py --mode {inputs.mode} --taxa {taxa}"
         try:
             out = subprocess.check_call(cmd, shell=True)
         except:
-            print(f"multimodel Graph Error for file contig_{i}")
+            print(f"multimodal Graph Error for file contig_{i}")
             cmd = "rm input/*"
             out = subprocess.check_call(cmd, shell=True)
             exit()
