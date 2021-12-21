@@ -52,7 +52,7 @@ If you want to predict hosts for viruses, the input should be a fasta file conta
 
 
 
-    python run_Speed_up.py [--contigs INPUT_FA] [--len MINIMUM_LEN] [--model MODEL] [--taxa TAXONOMY] [--topk TOPK_PRED]
+    python run_Speed_up.py [--contigs INPUT_FA] [--len MINIMUM_LEN] [--model MODEL] [--topk TOPK_PRED]
     
 **Options**
 
@@ -63,8 +63,6 @@ If you want to predict hosts for viruses, the input should be a fasta file conta
                             predict only for sequence >= len bp (default 8000)
       --model MODEL (pretrain or retrain)
                             predicting host with pretrained parameters or retrained paramters (default pretrain)
-      --taxa TAXONOMY (Species, Genus, Family, Order, etc.)
-                            predicting host across different taxonomy (default Species)
       --topk TOPK_PRED
                             The host prediction with topk score (default 1)
                
@@ -73,11 +71,8 @@ If you want to predict hosts for viruses, the input should be a fasta file conta
 
 Prediction on species level with pretrained paramters:
 
-    python run_Speed_up.py --contigs test_contigs.fa --len 8000 --model pretrain --taxa Species --topk 3
- 
-Prediction on species, genus, family level with retrained parameters:
-
-    python run_Speed_up.py --contigs test_contigs.fa --len 8000 --model pretrain --taxa Species,Genus,Family --topk 3
+    python run_Speed_up.py --contigs test_contigs.fa --len 8000 --model pretrain --topk 3
+    
     
 **OUTPUT**
 
