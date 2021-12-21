@@ -106,8 +106,8 @@ decoder = model.decoder(node_dim, 128, 32)
 
 
 # Load pre-trained model
-encoder_dict = torch.load(f"dataset/pkl/Encoder_{inputs.taxa}.pkl", map_location='cpu')
-decoder_dict = torch.load(f"dataset/pkl/Decoder_{inputs.taxa}.pkl", map_location='cpu')
+encoder_dict = torch.load(f"dataset/pkl/Encoder_Species.pkl", map_location='cpu')
+decoder_dict = torch.load(f"dataset/pkl/Decoder_Species.pkl", map_location='cpu')
 net.load_state_dict(encoder_dict)
 decoder.load_state_dict(decoder_dict)
 
@@ -261,10 +261,10 @@ if inputs.mode == 'virus':
             node2pred[id2node[i]] = sorted(pred_label_score, key=lambda tup: tup[1], reverse=True)
         for virus in crispr_pred:
             if virus not in node2pred:
-                pred = prokaryote_df[prokaryote_df['Accession'] == crispr_pred[virus]][inputs.taxa].values[0]
+                pred = prokaryote_df[prokaryote_df['Accession'] == crispr_pred[virus]]['Species'].values[0]
                 node2pred[virus] = (pred, 1)
         # dump the prediction
-        with open(f"tmp_pred/predict_{inputs.taxa}.csv", 'w') as file_out:
+        with open(f"tmp_pred/predict.csv", 'w') as file_out:
             file_out.write('contig,')
             for i in range(inputs.topk):
                 file_out.write(f'Top_{i+1}_label,Score_{i+1},')

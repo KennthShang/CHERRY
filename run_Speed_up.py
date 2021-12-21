@@ -19,12 +19,9 @@ parser.add_argument('--len', type=int, default=8000)
 parser.add_argument('--gpus', type=int, default = 0)
 parser.add_argument('--mode', type=str, default='virus')
 parser.add_argument('--model', type=str, default='pretrain')
-parser.add_argument('--taxa',  type=str, default='Species')
 parser.add_argument('--topk',  type=int, default=3)
 inputs = parser.parse_args()
 
-taxa_in = inputs.taxa
-taxa_list = taxa_in.split(',')
 
 
 def check_folder(file_name):
@@ -117,24 +114,23 @@ for i in range(file_id):
         exit()
 
 
-    for taxa in taxa_list:
-        cmd = f"python multimodal_graph.py --mode {inputs.mode} --taxa {taxa}"
-        try:
-            out = subprocess.check_call(cmd, shell=True)
-        except:
-            print(f"multimodal Graph Error for file contig_{i}")
-            cmd = "rm input/*"
-            out = subprocess.check_call(cmd, shell=True)
-            exit()
+    cmd = f"python multimodal_graph.py --mode {inputs.mode}"
+    try:
+        out = subprocess.check_call(cmd, shell=True)
+    except:
+        print(f"multimodal Graph Error for file contig_{i}")
+        cmd = "rm input/*"
+        out = subprocess.check_call(cmd, shell=True)
+        exit()
 
-        cmd = f"python run_Cherry.py --mode {inputs.mode} --model {inputs.model} --gpus {inputs.gpus} --taxa {taxa} --topk {inputs.topk}"
-        try:
-            out = subprocess.check_call(cmd, shell=True)
-        except:
-            print("GCN Error for file contig_{i}")
-            cmd = "rm input/*"
-            out = subprocess.check_call(cmd, shell=True)
-            exit()
+    cmd = f"python run_Cherry.py --mode {inputs.mode} --model {inputs.model} --gpus {inputs.gpus}  --topk {inputs.topk}"
+    try:
+        out = subprocess.check_call(cmd, shell=True)
+    except:
+        print("GCN Error for file contig_{i}")
+        cmd = "rm input/*"
+        out = subprocess.check_call(cmd, shell=True)
+        exit()
 
     # Clean files
     cmd = "rm input/*"
@@ -144,11 +140,11 @@ for i in range(file_id):
 
     # load prediction
     if inputs.mode == 'virus':
-        tmp_pred = pd.read_csv(f'tmp_pred/predict_{taxa}.csv')
+        tmp_pred = pd.read_csv(f'tmp_pred/predict.csv')
         name_list = pd.read_csv("name_list.csv")
         prediction = tmp_pred.rename(columns={'contig_names':'idx'})
         contig_to_pred = pd.merge(name_list, prediction, on='idx')
-        contig_to_pred.to_csv(f"pred/file_{i}_{taxa}.csv", index = None)
+        contig_to_pred.to_csv(f"pred/file_{i}.csv", index = None)
 
         cmd = "rm name_list.csv"
         out = subprocess.check_call(cmd, shell=True)
@@ -162,12 +158,11 @@ for i in range(file_id):
 
 if inputs.mode == 'virus':
     prediction_df = []
-    for taxa in taxa_list:
-        for i in range(file_id):
-            prediction_df.append(pd.read_csv(f'pred/file_{i}_{taxa}.csv'))
-            prediction_df = pd.concat(prediction_df)
-            prediction_df = prediction_df.drop(columns=['idx'])
-            prediction_df.to_csv(f'final_prediction_{taxa}.csv', index = None)
+    for i in range(file_id):
+        prediction_df.append(pd.read_csv(f'pred/file_{i}.csv'))
+        prediction_df = pd.concat(prediction_df)
+        prediction_df = prediction_df.drop(columns=['idx'])
+        prediction_df.to_csv(f'final_prediction.csv', index = None)
 
 
 elif inputs.mode == 'prokaryote':

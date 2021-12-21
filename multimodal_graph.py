@@ -25,7 +25,6 @@ phage_phage_ntw = "out/phage_phage.ntw"
 phage_host_ntw = "out/phage_host.ntw"
 parser = argparse.ArgumentParser(description='manual to this script')
 parser.add_argument('--mode', type=str, default = 'virus')
-parser.add_argument('--taxa',  type=str, default='Species')
 inputs = parser.parse_args()
 
 def check_folder(file_name):
@@ -75,7 +74,7 @@ bacteria_list = os.listdir('prokaryote/')
 bacteria_list = [name.split('.')[0] for name in bacteria_list]
 
 # add crispr edges
-species2bacteria = {bacteria_df[bacteria_df['Accession'] == item][inputs.taxa].values[0]: item for item in bacteria_list}
+species2bacteria = {bacteria_df[bacteria_df['Accession'] == item]['Species'].values[0]: item for item in bacteria_list}
 crispr_pred = pkl.load(open('out/crispr_pred.dict', 'rb'))
 for virus, host in crispr_pred.items():
     if host in species2bacteria:
@@ -83,8 +82,8 @@ for virus, host in crispr_pred.items():
 
 # add dataset edges
 for bacteria in bacteria_list:
-    species = bacteria_df[bacteria_df['Accession'] == bacteria][inputs.taxa].values[0]
-    phage_list = virus_df[virus_df[inputs.taxa] == species]['Accession'].values
+    species = bacteria_df[bacteria_df['Accession'] == bacteria]['Species'].values[0]
+    phage_list = virus_df[virus_df['Species'] == species]['Accession'].values
     for phage in phage_list:
         if phage in G.nodes():
             G.add_edge(bacteria, phage, weight = 1)
@@ -152,10 +151,10 @@ for node in G.nodes():
         neighbor_label = []
         for _, neighbor in G.edges(node):
             if neighbor in virus2id.keys():
-                virus_label = virus_df[virus_df['Accession'] == neighbor][inputs.taxa].values[0]
+                virus_label = virus_df[virus_df['Accession'] == neighbor]['Species'].values[0]
                 neighbor_label.append(virus_label)
             elif neighbor in prokaryote2id.keys():
-                prokaryote_label = prokaryote_df[prokaryote_df['Accession'] == neighbor][inputs.taxa].values[0]
+                prokaryote_label = prokaryote_df[prokaryote_df['Accession'] == neighbor]['Species'].values[0]
                 neighbor_label.append(prokaryote_label)
         # subgraph
         if len(set(neighbor_label)) == 1:
@@ -163,10 +162,10 @@ for node in G.nodes():
             test_id[node] = 1
         # CRISPR
         elif node in crispr_pred:
-            node2label[node] = prokaryote_df[prokaryote_df['Accession'] == crispr_pred[node]][inputs.taxa].values[0]
+            node2label[node] = prokaryote_df[prokaryote_df['Accession'] == crispr_pred[node]]['Species'].values[0]
             test_id[node] = 1
         elif node in virus_pred:
-            node2label[node] = virus_df[virus_df['Accession'] == virus_pred[node]][inputs.taxa].values[0]
+            node2label[node] = virus_df[virus_df['Accession'] == virus_pred[node]]['Species'].values[0]
             test_id[node] = 1
         # unlabelled
         else:
@@ -174,15 +173,15 @@ for node in G.nodes():
             test_id[node] = 2
     # if phage or host node
     elif node in prokaryote2id.keys():
-        prokaryote_label = prokaryote_df[prokaryote_df['Accession'] == node][inputs.taxa].values[0]
+        prokaryote_label = prokaryote_df[prokaryote_df['Accession'] == node]['Species'].values[0]
         node2label[node] = prokaryote_label
         test_id[node] = 0
     elif node in test_prokaryote2id.keys():
-        prokaryote_label = prokaryote_df[prokaryote_df['Accession'] == node][inputs.taxa].values[0]
+        prokaryote_label = prokaryote_df[prokaryote_df['Accession'] == node]['Species'].values[0]
         node2label[node] = prokaryote_label
         test_id[node] = 0
     elif node in virus2id.keys():
-        virus_label = virus_df[virus_df['Accession'] == node][inputs.taxa].values[0]
+        virus_label = virus_df[virus_df['Accession'] == node]['Species'].values[0]
         node2label[node] = virus_label
         test_id[node] = 0
     else: 
@@ -213,10 +212,10 @@ for sub in nx.connected_components(G):
     sub_label = []
     for node in sub:
         if node in virus2id.keys():
-            virus_label = virus_df[virus_df['Accession'] == neighbor][inputs.taxa].values[0]
+            virus_label = virus_df[virus_df['Accession'] == neighbor]['Species'].values[0]
             sub_label.append(virus_label)
         elif neighbor in prokaryote2id.keys():
-            prokaryote_label = prokaryote_df[prokaryote_df['Accession'] == neighbor][inputs.taxa].values[0]
+            prokaryote_label = prokaryote_df[prokaryote_df['Accession'] == neighbor]['Species'].values[0]
             sub_label.append(prokaryote_label)
     if set(sub_label) == 1:
         for node in sub:
