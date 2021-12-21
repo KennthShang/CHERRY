@@ -152,6 +152,7 @@ for node in G.nodes():
         if node in virus_pred:
             node2label[node] = virus_df[virus_df['Accession'] == virus_pred[node]][inputs.taxa].values[0]
             test_id[node] = 1
+            continue
         neighbor_label = []
         for _, neighbor in G.edges(node):
             if neighbor in virus2id.keys():
