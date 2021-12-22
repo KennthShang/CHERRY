@@ -285,7 +285,7 @@ if inputs.mode == 'virus':
 # predicting virus
 if inputs.mode == 'prokaryote':
     candidate_host = []
-    for file in os.listdir('prokaryote/'):
+    for file in os.listdir('new_prokaryote/'):
         candidate_host.append(file.rsplit('.', 1)[0])
     candidateidx = []
     for host in candidate_host:
@@ -298,21 +298,21 @@ if inputs.mode == 'prokaryote':
             if host not in node2id:
                 host2pred[host] = "unknown"
             else:
-                host_feature = encode[node2id[host]]
+                prokaryote_feature = encode[node2id[host]]
                 for i in range(len(encode)):
                     if i in trainable_host_idx or i in candidateidx:
                         continue
-                    phage_feature = encode[i]
+                    virus_feature = encode[i]
                     logit = torch.sigmoid(decoder(virus_feature - prokaryote_feature))
-                    if logit > 0.98:
+                    if logit > inputs.t:
                         try:
                             host2pred[host].append(id2node[i])
                         except:
                             host2pred[host] = [id2node[i]]
-    with open('tmp_pred/predict.csv') as file:
+    with open('tmp_pred/predict.csv', 'w') as file:
         file.write('prokaryote,virus\n')
         for prokaryote in host2pred:
-            file.write(prokaryote+','+ ",".join(host2pred[prokaryote])+'\n')
+            file.write(prokaryote+','+ "|".join(host2pred[prokaryote])+'\n')
 
 
 

@@ -20,6 +20,7 @@ parser.add_argument('--gpus', type=int, default = 0)
 parser.add_argument('--mode', type=str, default='virus')
 parser.add_argument('--model', type=str, default='pretrain')
 parser.add_argument('--topk',  type=int, default=3)
+parser.add_argument('--t',  type=float, default=0.98)
 inputs = parser.parse_args()
 
 
@@ -123,7 +124,7 @@ for i in range(file_id):
         out = subprocess.check_call(cmd, shell=True)
         exit()
 
-    cmd = f"python run_Cherry.py --mode {inputs.mode} --model {inputs.model} --gpus {inputs.gpus}  --topk {inputs.topk}"
+    cmd = f"python run_Cherry.py --mode {inputs.mode} --model {inputs.model} --gpus {inputs.gpus}  --topk {inputs.topk} --t {inputs.t}"
     try:
         out = subprocess.check_call(cmd, shell=True)
     except:
@@ -167,6 +168,7 @@ if inputs.mode == 'virus':
 
 
 elif inputs.mode == 'prokaryote':
+    prediction_df = []
     for i in range(file_id):
         prediction_df.append(pd.read_csv(f'pred/file_{i}.csv'))
         prediction_df = pd.concat(prediction_df)
