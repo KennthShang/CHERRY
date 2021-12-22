@@ -162,7 +162,7 @@ if inputs.mode == 'virus':
         prediction_df.append(pd.read_csv(f'pred/file_{i}.csv'))
     prediction_df = pd.concat(prediction_df)
     prediction_df = prediction_df.drop(columns=['idx'])
-    prediction_df = prediction_df.drop(prediction_df.columns[len(prediction_df.columns)-1], axis=1, inplace=True)
+    prediction_df.drop(prediction_df.columns[len(prediction_df.columns)-1], axis=1, inplace=True)
     prediction_df.to_csv(f'final_prediction.csv', index = None)
 
 
