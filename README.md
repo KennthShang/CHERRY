@@ -90,16 +90,26 @@ If you want to predict hosts for viruses, you need to supply two kinds of inputs
 3. A fasta file containing the virus squences.
 Then, the program will output which virus in your fasta file will infect the prkaryotes in the *new_prokaryote/* folder.
 
-The command is simlar to the previous one but one more paramter is need:
+The command is simlar to the previous one but two more paramter is need:
 
 
-    python run_Speed_up.py [--mode PROKARYOTE]
+    python run_Speed_up.py [--mode MODE] [--t THRESHOLD]
     
 **Example**
 
 
-    python run_Speed_up.py --contigs test_contigs.fa --len 8000 --model pretrain --mode prokaryote
+    python run_Speed_up.py --contigs test_contigs.fa --mode prokaryote --t 0.98
 
+
+**Options**
+
+
+      --mode MODE (prokaryote or virus)
+                            Switch mode for predicting virus or predicting host
+      --t THRESHOLD
+                            The confident threshold for predicting virus, the higier the threshold the higher the precision. (default 0.98)
+                            
+                   
 **OUTPUT**
 
 The format of the output file is a csv file which contain the prediction of each virus. Column *prokaryote* is the accession of your given prokaryotic genomes. Column *virus* is the list of viruses that might infect these genomes.
