@@ -142,7 +142,7 @@ for i in range(file_id):
     if inputs.mode == 'virus':
         tmp_pred = pd.read_csv(f'tmp_pred/predict.csv')
         name_list = pd.read_csv("name_list.csv")
-        prediction = tmp_pred.rename(columns={'contig_names':'idx'})
+        prediction = tmp_pred.rename(columns={'contig':'idx'})
         contig_to_pred = pd.merge(name_list, prediction, on='idx')
         contig_to_pred.to_csv(f"pred/file_{i}.csv", index = None)
 
@@ -160,9 +160,10 @@ if inputs.mode == 'virus':
     prediction_df = []
     for i in range(file_id):
         prediction_df.append(pd.read_csv(f'pred/file_{i}.csv'))
-        prediction_df = pd.concat(prediction_df)
-        prediction_df = prediction_df.drop(columns=['idx'])
-        prediction_df.to_csv(f'final_prediction.csv', index = None)
+    prediction_df = pd.concat(prediction_df)
+    prediction_df = prediction_df.drop(columns=['idx'])
+    prediction_df = prediction_df.drop(prediction_df.columns[len(prediction_df.columns)-1], axis=1, inplace=True)
+    prediction_df.to_csv(f'final_prediction.csv', index = None)
 
 
 elif inputs.mode == 'prokaryote':
