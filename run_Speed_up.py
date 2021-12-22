@@ -23,9 +23,6 @@ parser.add_argument('--topk',  type=int, default=3)
 parser.add_argument('--t',  type=float, default=0.98)
 inputs = parser.parse_args()
 
-if inputs.mode == 'prokaryote' and inputs.mode != 'prokaryote'
-
-
 def check_folder(file_name):
     if not os.path.exists(file_name):
         _ = os.makedirs(file_name)
