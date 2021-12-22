@@ -73,6 +73,7 @@ Prediction on species level with pretrained paramters:
 
     python run_Speed_up.py --contigs test_contigs.fa --len 8000 --model pretrain --topk 3
     
+*Note:* Commonly, you do not need to retrain the model, especially when you do not have gpu unit. 
     
 **OUTPUT**
 
