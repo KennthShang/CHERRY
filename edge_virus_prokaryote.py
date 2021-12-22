@@ -114,7 +114,7 @@ for genome in genome_list:
 if inputs.mode != 'virus':
     genome_list = os.listdir(new_prokaryote)
     for genome in genome_list:
-        make_blast_cmd = 'makeblastdb -in '+ new_prokaryote + genome +' -dbtype nucl -parse_seqids -out '+ blast_database_out + genome.split(".")[0]
+        make_blast_cmd = 'makeblastdb -in '+ new_prokaryote + genome +' -dbtype nucl -parse_seqids -out '+ new_blast_tab_out + genome.split(".")[0]
         print("Creating blast database...")
         _ = subprocess.check_call(make_blast_cmd, shell=True)
         blast_cmd = 'blastn -query out/query.fa -db new_blast_db/'+genome.split(".")[0]+' -outfmt 6 -out '+ new_blast_tab_out + genome.split(".")[0]+'.tab -num_threads 16'

@@ -17,12 +17,13 @@ parser = argparse.ArgumentParser(description='manual to this script')
 parser.add_argument('--contigs', type=str, default = 'test_contigs.fa')
 parser.add_argument('--len', type=int, default=8000)
 parser.add_argument('--gpus', type=int, default = 0)
-parser.add_argument('--mode', type=str, default='virus')
-parser.add_argument('--model', type=str, default='pretrain')
+parser.add_argument('--mode', type=str, default='virus', choices =['virus', 'prokaryote'])
+parser.add_argument('--model', type=str, default='pretrain', choices = ['pretrain', 'retrain'])
 parser.add_argument('--topk',  type=int, default=3)
 parser.add_argument('--t',  type=float, default=0.98)
 inputs = parser.parse_args()
 
+if inputs.mode == 'prokaryote' and inputs.mode != 'prokaryote'
 
 
 def check_folder(file_name):
