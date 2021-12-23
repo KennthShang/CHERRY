@@ -106,7 +106,6 @@ elif inputs.mode == 'prokaryote':
     test_prokaryoteF   = pkl.load(open("node_feature/test_prokaryote.F",'rb'))
     test_virus2id      = pkl.load(open("node_feature/test_virus.dict",'rb'))
     test_virusF        = pkl.load(open("node_feature/test_virus.F",'rb'))
-    test_virus2id = {}
 else:
     print("mode error")
 
