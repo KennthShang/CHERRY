@@ -143,7 +143,8 @@ If you know more virus-prokaryote interactions than our pre-trained model (given
 
 ### References
 The paper is submitted to the *Briefings in Bioinformatics*.
-The Arxiv version can be found via: [CHERRY: a Computational metHod for accuratE pRediction of virus-pRokarYotic interactions using a graph encoder-decoder model](https://arxiv.org/abs/2201.01018)
+
+The arXiv version can be found via: [CHERRY: a Computational metHod for accuratE pRediction of virus-pRokarYotic interactions using a graph encoder-decoder model](https://arxiv.org/abs/2201.01018)
 
 ### Contact
 If you have any questions, please email us: jyshang2-c@my.cityu.edu.hk
