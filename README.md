@@ -142,7 +142,7 @@ If you know more virus-prokaryote interactions than our pre-trained model (given
 
 
 ### References
-The paper is submitted to the *Nucleic Acids Research*.
+The paper is submitted to the *Briefings in Bioinformatics*.
 
 ### Contact
 If you have any questions, please email us: jyshang2-c@my.cityu.edu.hk
