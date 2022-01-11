@@ -26,13 +26,13 @@ If you want to use the gpu to accelerate the program:
 * Pytorch-gpu
 
 ### An easiler way to install
-We recommend you to install all the package with [Anaconda](https://anaconda.org/)
+*Note*: we suggest you to install all the package using conda (both miniconda and [Anaconda](https://anaconda.org/) are ok)
 
 After cloning this respository, you can use anaconda to install the **CHERRY.yaml**. This will install all packages you need with gpu mode (make sure you have installed cuda on your system to use the gpu version. Othervise, it will run with cpu version). The command is: `conda env create -f CHERRY.yaml`
 
 * For cpu version pytorch: `conda install pytorch torchvision torchaudio cpuonly -c pytorch`
 * For gpu version pytorch: Search [pytorch](https://pytorch.org/) to find the correct cuda version according to your computer
-*Note*: we suggest you to install all the package using conda (both miniconda and anaconda are ok). We supply a 
+
 
 ### Prepare the database
 Due to the limited size of the GitHub, we zip the database. Before using CHEERY, you need to unpack them using the following commands.
