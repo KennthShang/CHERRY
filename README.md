@@ -41,6 +41,7 @@ Due to the limited size of the GitHub, we zip the database. Before using CHEERY,
 cd CHEERY
 conda env create -f CHERRY.yaml -n cherry
 conda activate cherry
+pip install sklearn
 cd dataset
 bzip2 -d protein.fasta.bz2
 bzip2 -d nucl.fasta.bz2
