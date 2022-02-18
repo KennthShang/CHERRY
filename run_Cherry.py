@@ -14,8 +14,6 @@ import  pickle as pkl
 import  scipy.sparse as sp
 import argparse
 from scipy.special import softmax
-from sklearn.metrics import classification_report
-from sklearn.metrics import accuracy_score
 from collections import Counter
 from importlib import reload
 import networkx as nx
