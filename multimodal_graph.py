@@ -211,10 +211,10 @@ for sub in nx.connected_components(G):
     sub_label = []
     for node in sub:
         if node in virus2id.keys():
-            virus_label = virus_df[virus_df['Accession'] == neighbor]['Species'].values[0]
+            virus_label = virus_df[virus_df['Accession'] == node]['Species'].values[0]
             sub_label.append(virus_label)
-        elif neighbor in prokaryote2id.keys():
-            prokaryote_label = prokaryote_df[prokaryote_df['Accession'] == neighbor]['Species'].values[0]
+        elif node in prokaryote2id.keys():
+            prokaryote_label = prokaryote_df[prokaryote_df['Accession'] == node]['Species'].values[0]
             sub_label.append(prokaryote_label)
     if set(sub_label) == 1:
         for node in sub:
