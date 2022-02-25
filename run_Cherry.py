@@ -45,7 +45,7 @@ node2id     = pkl.load(open("GCN_data/node2id.dict", "rb" ))
 idx_test    = pkl.load(open("GCN_data/test_id.dict", 'rb'))
 node2label  = pkl.load(open("GCN_data/node2label.dict",'rb'))
 crispr_pred = pkl.load(open('out/crispr_pred.dict', 'rb'))
-bacteria_df = pd.read_csv('dataset/prokaryote.csv')
+prokaryote_df = pd.read_csv('dataset/prokaryote.csv')
 
 
 
