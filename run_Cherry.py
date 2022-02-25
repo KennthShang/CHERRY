@@ -262,7 +262,7 @@ if inputs.mode == 'virus':
         for virus in crispr_pred:
             if virus not in node2pred:
                 pred = prokaryote_df[prokaryote_df['Accession'] == crispr_pred[virus]]['Species'].values[0]
-                node2pred[virus] = (pred, 1)
+                node2pred[virus] = [(pred, 1)]
         # dump the prediction
         with open(f"tmp_pred/predict.csv", 'w') as file_out:
             file_out.write('contig,')
