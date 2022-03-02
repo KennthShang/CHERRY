@@ -214,7 +214,7 @@ _ = subprocess.check_call("cat single_contig/* > out/test.fa", shell=True)
 query_file = "out/test.fa"
 db_virus_prefix = "dataset/virus_db/allVIRUS"
 output_file = "out/virus_out.tab"
-virus_call = NcbiblastnCommandline(query=query_file,db=db_virus_prefix,out=output_file,outfmt="6 qseqid sseqid evalue pident length qlen", evalue=1,gapopen=10,penalty=-1,
+virus_call = NcbiblastnCommandline(query=query_file,db=db_virus_prefix,out=output_file,outfmt="6 qseqid sseqid evalue pident length qlen", evalue=1e-10,gapopen=10,penalty=-1,
                                   gapextend=2,word_size=7,dust='no',
                                  task='blastn-short',perc_identity=90,num_threads=16)
 virus_call()
