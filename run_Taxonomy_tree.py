@@ -21,9 +21,11 @@ prediction = pred_df[f'Top_{inputs.k}_label'].values
 
 tree_df = []
 for label in prediction:
-    tree_df.append(label_df[label_df['Species'] == label])
+    tree_df.append(label_df[label_df['Species'] == label].iloc[0].to_frame().T)
+
 
 tree_df = pd.concat(tree_df)
 tree_df['Accession'] = accession
 tree_df = tree_df.rename(columns={'Accession':'Contig_name'})
 tree_df.to_csv(f'Top_{inputs.k}_prediction_taxonomy.csv', index=False)
+
