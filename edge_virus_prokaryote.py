@@ -148,7 +148,7 @@ if inputs.mode != 'virus':
     for file in tab_file_list:
         prokaryote_id = file.split('.')[0]
         virus_id_list = []
-        with open(blast_tab_out+file) as file_in:
+        with open(new_blast_tab_out+file) as file_in:
             for line in file_in.readlines():
                 tmp = line.split('\t')
                 virus_id = tmp[0]
