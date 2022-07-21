@@ -136,7 +136,9 @@ If you have a metagenomic data and you know that only E. coli, Butyrivibrio fibr
 
     GCF_000007445,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacterales,Enterobacteriaceae,Escherichia,Escherichia coli
 
-The corresponding header of the entry is: Accession,Superkingdom,Phylum,Class,Order,Family,Genus,Species. If you do not know the whole taxonomy tree, you can directly use a specific name for all columns. Because CHERRY is a link prediction tool, it will directly use the given name for prediction.
+The corresponding header of the entry is: Accession,Superkingdom,Phylum,Class,Order,Family,Genus,Species. If you do not know the whole taxonomy tree, you can directly use a specific name for all columns. Because CHERRY is a link prediction tool, it will directly use the given name for prediction. For example, you only have a bacteria assembly named **Bin2077.fa**, then the entry can be:
+
+    Bin2077,Bin2077,Bin2077,Bin2077,Bin2077,Bin2077,Bin2077,Bin2077
 
 *Noted:* Since our program will use the accession for searching and constructing the knowledge graph, the name of the fasta file of your genomes should be the same as the given accession. For example, if your accession is GCF_000007445, your file name should be GCF_000007445.fa. Otherwise, the program cannot find the entry. 
 
