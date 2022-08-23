@@ -34,6 +34,7 @@ def return_4mer(file_in_fn):
         file2idx[file.rsplit('.', 1)[0]] = idx
         for record in SeqIO.parse(file_in_fn + file, 'fasta'):
             seq = str(record.seq)
+            seq = seq.upper()
             for pos in range(len(seq)-3):
                 try:
                     feature[idx][mer2dict[seq[pos:pos+4]]] += 1
