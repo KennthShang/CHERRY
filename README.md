@@ -95,9 +95,10 @@ Since the topk method is given, we cannot give the how taxaonmic tree for each p
 Because there are k prediction in the "final_prediction.csv" file, you need to specify the k to generate the tree. The output of program is 'Top_k_prediction_taxonomy.csv'.
 
 ### 2 Predicting virus infecting prokaryote
-If you want to predict hosts for viruses, you need to supply two kinds of inputs:
+If you want to predict hosts for viruses, you need to supply three kinds of inputs:
 1. Place your prokaryotic genomes in *new_prokaryote/* folder.
-3. A fasta file containing the virus squences.
+2. A fasta file containing the virus squences.
+3. Add the taxa information in 'database/prokaryote.csv'. (The example can be found in the *Extension of the parokaryotic genomes database*)
 Then, the program will output which virus in your fasta file will infect the prkaryotes in the *new_prokaryote/* folder.
 
 The command is simlar to the previous one but two more paramter is need:
