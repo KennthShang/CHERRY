@@ -1,6 +1,11 @@
 ![CHERRY](logo.png)
 CHERRY is a python library for predicting the interactions between viral and prokaryotic genomes. CHERRY is based on a deep learning model, which consists of a graph convolutional encoder and a link prediction decoder.
 
+
+## News !!!
+Our web server for phage-related tasks (including phage identification, taxonomy classification, lifestyle prediction, and host prediction) is available! You can visit PhaBOX to use the GUI. We also provided more detailed intermediate files and visualization for further analyzation. A stand-alone version of PhaBOX is also available via GitHub version, and you can run all these tools at once. Hope you will enjoy it!
+
+
 # Overview
 There are two kind of tasks that CHERRY can work:
 1. Host prediction for virus
