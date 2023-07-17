@@ -3,10 +3,11 @@ CHERRY is a python library for predicting the interactions between viral and pro
 
 
 ## News !!!
-1. A lite version of CHERRY is avaliable now. Please visit [https://github.com/KennthShang/CHERRY_crispr] to check. This lite version only use the CRISPRs information for prediction (low number of predicted phages but high precision)
+1. A lite version of CHERRY is avaliable now. Please visit [https://github.com/KennthShang/CHERRY_crispr] to check. This lite version only uses the CRISPRs information for prediction (low number of predicted phages but high precision)
 
+2. This folder will no longer be maintained. The program has been updated and moved to PhaBOX [https://github.com/KennthShang/PhaBOX], which is more user-friendly. Hope you will enjoy it.
 
-2. Our web server for phage-related tasks (including phage identification, taxonomy classification, lifestyle prediction, and host prediction) is available! You can visit [https://phage.ee.cityu.edu.hk/] to use the GUI. We also provided more detailed intermediate files and visualization for further analyzation. You can also find the program in [https://github.com/KennthShang/PhaBOX]
+3. Our web server for phage-related tasks (including phage identification, taxonomy classification, lifestyle prediction, and host prediction) is available! You can visit [https://phage.ee.cityu.edu.hk/] to use the GUI. We also provided more detailed intermediate files and visualization for further analysis. You can also find the local version in [https://github.com/KennthShang/PhaBOX]
 
 # Overview
 There are two kind of tasks that CHERRY can work:
