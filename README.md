@@ -3,11 +3,14 @@ CHERRY is a python library for predicting the interactions between viral and pro
 
 
 ## News !!!
-1. A lite version of CHERRY is avaliable now. Please visit [https://github.com/KennthShang/CHERRY_crispr] to check. This lite version only uses the CRISPRs information for prediction (low number of predicted phages but high precision)
 
-2. This folder will no longer be maintained. The program has been updated and moved to PhaBOX [https://github.com/KennthShang/PhaBOX], which is more user-friendly. Hope you will enjoy it.
+1. If you want to use cherry on your own bacterial assemblies. Please visit [https://github.com/KennthShang/CHERRY_crispr](https://github.com/KennthShang/CHERRY_MAGs/tree/main) to check. This MAGs version allows you to use your own bacterial assemblies and predict the interactions between your phages and your bacteria.
 
-3. Our web server for phage-related tasks (including phage identification, taxonomy classification, lifestyle prediction, and host prediction) is available! You can visit [https://phage.ee.cityu.edu.hk/] to use the GUI. We also provided more detailed intermediate files and visualization for further analysis. You can also find the local version in [https://github.com/KennthShang/PhaBOX]
+2. Only CRISPR version of CHERRY is available now. Please visit [https://github.com/KennthShang/CHERRY_crispr](https://github.com/KennthShang/CHERRY_crispr) to check. This lite version only uses the CRISPRs information for prediction (low number of predicted phages but high precision)
+
+3. This folder will no longer be maintained. The program has been updated and moved to PhaBOX [https://github.com/KennthShang/PhaBOX], which is more user-friendly. Hope you will enjoy it.
+
+4. Our web server for phage-related tasks (including phage identification, taxonomy classification, lifestyle prediction, and host prediction) is available! You can visit [https://phage.ee.cityu.edu.hk/] to use the GUI. We also provided more detailed intermediate files and visualization for further analysis. You can also find the local version in [https://github.com/KennthShang/PhaBOX]
 
 # Overview
 There are two kind of tasks that CHERRY can work:
@@ -38,7 +41,7 @@ gunzip *
 cd ..
 ```
 
-You only need to activate your 'phamer' environment before using PhaMer in the next time.
+You only need to activate your 'cherry' environment before using CHERRY in the next time.
 
 ```
 conda activate cherry
@@ -80,31 +83,6 @@ We will supply a script for you to convert the prediction into a complte taxonmo
     python run_Taxonomy_tree.py [--k TOPK_PRED]
     
 Because there are k prediction in the "final_prediction.csv" file, you need to specify the k to generate the tree. The output of program is 'Top_k_prediction_taxonomy.csv'.
-
-
-### Predicting the interactions between your viruses and prokaryotes/MAGs
-If you only want CHERRY to give a host from your own prokaryotes/MAGs, you can replace the genomes provided in the `prokaryote/` folder with your own prokaryotes/MAGs. Then you can run with the same command as mentioned above.
-
-
-However, Please always remember that you still need to update the accession of your prokaryotes/MAGs to the *dataset/prokaryote.csv* file. The rule and an example can be fond in section **Extension of the parokaryotic genomes database** below.
-
-
-
-### Extension of the parokaryotic genomes database
-Due to the limitation of storage on GitHub, we only provided the parokaryote with known interactions (Date up to 2020) in *prokaryote* folder. If you want to predict interactions with more species, please place your parokaryotic genomes into *prokaryote/* folder and add an entry of taxonomy information into *dataset/prokaryote.csv*. We also recommand you only add the prokaryotes of interest to save the computation resourse and time. This is because all the genomes in *prokaryote* folder will be used to generate the multimodal graph, which is a O(n^2) algorithm. 
-
-**Example**
-
-If you have a metagenomic data and you know that only E. coli, Butyrivibrio fibrisolvens, and Faecalibacterium prausnitzii exist in the metagenomic data. Then you can placed the genomes of these three species into the *prokaryote/* and add the entry in *dataset/prokaryote.csv*. An example of the entry is look like:
-
-    GCF_000007445,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacterales,Enterobacteriaceae,Escherichia,Escherichia coli
-
-The corresponding header of the entry is: Accession,Superkingdom,Phylum,Class,Order,Family,Genus,Species. If you do not know the whole taxonomy tree, you can directly use a specific name for all columns. For example, you only have a bacteria assembly named **Bin2077.fa**, then the entry can be:
-
-    Bin2077,Bin2077,Bin2077,Bin2077,Bin2077,Bin2077,Bin2077,Bin2077
-
-*Noted:* Since our program will use the "accession" for searching and constructing the knowledge graph, the name of the fasta file of your genomes should be the same as the given "accession" in the CSV file. For example, if your accession in CSV is GCF_000007445, your file name should be GCF_000007445.fa. Otherwise, the program cannot find the entry. Also, please **DO NOT** use special character otherwise it might raises unexpected errors.
-
 
 
 ### Extension of the virus-prokaryote interactions database
