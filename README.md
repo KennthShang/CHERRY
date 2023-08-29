@@ -4,7 +4,7 @@ CHERRY is a python library for predicting the interactions between viral and pro
 
 ## News !!!
 
-1. If you want to use cherry on your own bacterial assemblies. Please visit [https://github.com/KennthShang/CHERRY_crispr](https://github.com/KennthShang/CHERRY_MAGs/tree/main) to check. This MAGs version allows you to use your own bacterial assemblies and predict the interactions between your phages and your bacteria.
+1. If you want to use cherry on your own bacterial assemblies. Please visit [https://github.com/KennthShang/CHERRY_MAGs](https://github.com/KennthShang/CHERRY_MAGs/tree/main) to check. This MAGs version allows you to use your own bacterial assemblies and predict the interactions between your phages and your bacteria.
 
 2. Only CRISPR version of CHERRY is available now. Please visit [https://github.com/KennthShang/CHERRY_crispr](https://github.com/KennthShang/CHERRY_crispr) to check. This lite version only uses the CRISPRs information for prediction (low number of predicted phages but high precision)
 
