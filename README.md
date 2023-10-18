@@ -4,13 +4,15 @@ CHERRY is a python library for predicting the interactions between viral and pro
 
 ## News !!!
 
-1. If you want to use cherry on your own bacterial assemblies. Please visit [https://github.com/KennthShang/CHERRY_MAGs](https://github.com/KennthShang/CHERRY_MAGs/tree/main) to check. This MAGs version allows you to use your own bacterial assemblies and predict the interactions between your phages and your bacteria.
+1. If you want to use cherry on your own bacterial assemblies. Please visit [https://github.com/KennthShang/CHERRY_MAGs](https://github.com/KennthShang/CHERRY_MAGs/tree/main) to check. This MAGs version allows you to use your own bacterial assemblies and predict the interactions between your phages and bacteria.
 
-2. Only CRISPR version of CHERRY is available now. Please visit [https://github.com/KennthShang/CHERRY_crispr](https://github.com/KennthShang/CHERRY_crispr) to check. This lite version only uses the CRISPRs information for prediction (low number of predicted phages but high precision)
+2. Only the CRISPR version of CHERRY is available now. Please visit [https://github.com/KennthShang/CHERRY_crispr](https://github.com/KennthShang/CHERRY_crispr) to check. This lite version only uses the CRISPRs information for prediction (low number of predicted phages but high precision)
 
-3. This folder will no longer be maintained. The program has been updated and moved to PhaBOX [https://github.com/KennthShang/PhaBOX], which is more user-friendly. Hope you will enjoy it.
+3. If you want to predict the **host range** for your phages, we provide an extension of CHERRY, which will output all the CRISPR results from the database. Please visit [https://github.com/KennthShang/CHERRY_crispr_multihost](https://github.com/KennthShang/CHERRY_crispr_multihost)
 
-4. Our web server for phage-related tasks (including phage identification, taxonomy classification, lifestyle prediction, and host prediction) is available! You can visit [https://phage.ee.cityu.edu.hk/] to use the GUI. We also provided more detailed intermediate files and visualization for further analysis. You can also find the local version in [https://github.com/KennthShang/PhaBOX]
+4. This folder will no longer be maintained. The program has been updated and moved to PhaBOX [https://github.com/KennthShang/PhaBOX], which is more user-friendly. Hope you will enjoy it.
+
+5. Our web server for phage-related tasks (including phage identification, taxonomy classification, lifestyle prediction, and host prediction) is available! You can visit [https://phage.ee.cityu.edu.hk/] to use the GUI. We also provided more detailed intermediate files and visualization for further analysis. You can also find the local version in [https://github.com/KennthShang/PhaBOX]
 
 # Overview
 There are two kind of tasks that CHERRY can work:
