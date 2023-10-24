@@ -271,9 +271,9 @@ if inputs.mode == 'virus':
             for contig in node2pred:
                 file_out.write(f'{contig},')
                 cnt = 1
-                if score > 1:
-                    score = 1
                 for label, score in node2pred[contig]:
+                    if score > 1:
+                        score = 1
                     if cnt > inputs.topk:
                         break
                     cnt+=1
