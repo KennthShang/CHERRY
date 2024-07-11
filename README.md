@@ -2,17 +2,18 @@
 CHERRY is a python library for predicting the interactions between viral and prokaryotic genomes. CHERRY is based on a deep learning model, which consists of a graph convolutional encoder and a link prediction decoder.
 
 
-## News !!!
+# News !!!
 
-1. If you want to use cherry on your own bacterial assemblies. Please visit [https://github.com/KennthShang/CHERRY_MAGs](https://github.com/KennthShang/CHERRY_MAGs/tree/main) to check. This MAGs version allows you to use your own bacterial assemblies and predict the interactions between your phages and bacteria.
+1. 🚀&nbsp; This folder will no longer be maintained. The program has been updated and moved to [PhaBOX](https://github.com/KennthShang/PhaBOX), which is more user-friendly. Hope you will enjoy it.
 
-2. Only the CRISPR version of CHERRY is available now. Please visit [https://github.com/KennthShang/CHERRY_crispr](https://github.com/KennthShang/CHERRY_crispr) to check. This lite version only uses the CRISPRs information for prediction (low number of predicted phages but high precision)
 
-3. If you want to predict the **host range** for your phages, we provide an extension of CHERRY, which will output all the CRISPR results from the database. Please visit [https://github.com/KennthShang/CHERRY_crispr_multihost](https://github.com/KennthShang/CHERRY_crispr_multihost)
+2. 🚀&nbsp; Our web server based on PhaBOX for all phage-related tasks is available! You can visit [WebServer](https://phage.ee.cityu.edu.hk/) to use the GUI. 
 
-4. This folder will no longer be maintained. The program has been updated and moved to PhaBOX [https://github.com/KennthShang/PhaBOX], which is more user-friendly. Hope you will enjoy it.
 
-5. Our web server for phage-related tasks (including phage identification, taxonomy classification, lifestyle prediction, and host prediction) is available! You can visit [https://phage.ee.cityu.edu.hk/] to use the GUI. We also provided more detailed intermediate files and visualization for further analysis. You can also find the local version in [https://github.com/KennthShang/PhaBOX]
+3. 📘&nbsp; If you want to use cherry on your own bacterial assemblies. Please visit [https://github.com/KennthShang/CHERRY_MAGs](https://github.com/KennthShang/CHERRY_MAGs/tree/main) to check. This MAGs version allows you to use your own bacterial assemblies and predict the interactions between your phages and bacteria.
+
+
+
 
 # Overview
 There are two kind of tasks that CHERRY can work:
