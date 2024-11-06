@@ -1,17 +1,11 @@
+# ATTNETION!!!
+1. The program has been updated and moved to (PhaBOX)[https://github.com/KennthShang/PhaBOX], which is more user-friendly. In the new version, CHERRY is generalized to all kinds of viruses, more than just phages. In addition, the latest CHERRY allows you to use your MAGs as inputs and predict the interactions between your viruses and MAGs. Hope you will enjoy it. This folder will be no longer maintained. 
+
+2. Our web server for  viruses-related tasks (including virus identification, taxonomy classification, lifestyle prediction, and host prediction) is available! You can visit [PhaBOX 2](https://phage.ee.cityu.edu.hk/) to use the GUI. We also provided more detailed intermediate files and visualization for further analysis. 
+
+
 ![CHERRY](logo.png)
 CHERRY is a python library for predicting the interactions between viral and prokaryotic genomes. CHERRY is based on a deep learning model, which consists of a graph convolutional encoder and a link prediction decoder.
-
-
-# News !!!
-
-1. 🚀&nbsp; This folder will no longer be maintained. The program has been updated and moved to [PhaBOX](https://github.com/KennthShang/PhaBOX), which is more user-friendly. Hope you will enjoy it.
-
-
-2. 🚀&nbsp; Our web server based on PhaBOX for all phage-related tasks is available! You can visit [WebServer](https://phage.ee.cityu.edu.hk/) to use the GUI. 
-
-
-3. 📘&nbsp; If you want to use cherry on your own bacterial assemblies. Please visit [https://github.com/KennthShang/CHERRY_MAGs](https://github.com/KennthShang/CHERRY_MAGs/tree/main) to check. This MAGs version allows you to use your own bacterial assemblies and predict the interactions between your phages and bacteria.
-
 
 
 
